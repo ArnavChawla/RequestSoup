@@ -20,17 +20,17 @@ def post(url, headers=None,data=None,json=None,allow_redirects=None,cookies=None
         text = r.text
         return r
     except:
-        return "(Request-Soup Debug) there was an error with your request"
+        return "(Request-Soup Debug) there was an error with your POST request"
 
 def find(content,second=None, source=None, parser=None):
     bs = None
+    global text
     if source == None:
         if parser == None:
-            global text
+
             bs = soup(text, "html.parser")
         else:
             try:
-                global text
                 bs = soup(text, parser)
             except:
                 return "Parser String Invalid"
@@ -42,14 +42,14 @@ def find(content,second=None, source=None, parser=None):
     return bs.find(content,second)
 
 def findAll(content,second=None, source=None, parser=None):
+    global text
     bs = None
     if source == None:
         if parser == None:
-            global text
+
             bs = soup(text, "html.parser")
         else:
             try:
-                global text
                 bs = soup(text, parser)
             except:
                 return "Parser String Invalid"
