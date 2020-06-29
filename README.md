@@ -17,7 +17,7 @@ Usage of the package is almost identical to the indiviual use of requests and Be
 
 	elements = scraper.findAll("a",{"href":"/"})
 	#elements will now be a list of all "a" elements on the page with an herf that points to "/"
-For more detailed usage check out: add read the docs link
+For more detailed usage check out: https://requestsoup.readthedocs.io/en/latest/
 
 # Sessions
 The package also features the ability to create Request Sessions. An example of this is provided here:
