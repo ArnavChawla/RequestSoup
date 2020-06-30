@@ -10,6 +10,7 @@ def get(url, Headers = None, data=None, params=None, allow_redirects=None,cookie
         text = r.text
         return r
     except Exception as err:
+        raise err
         return "(Request-Soup Debug) there was an error with your GET request"
 def post(url, headers=None,data=None,json=None,allow_redirects=None,cookies=None,auth=None):
     if allow_redirects != None and allow_redirects != True:
@@ -20,6 +21,7 @@ def post(url, headers=None,data=None,json=None,allow_redirects=None,cookies=None
         text = r.text
         return r
     except Exception as err:
+        raise err
         return "(Request-Soup Debug) there was an error with your POST request"
 
 def find(content,second=None, source=None, parser=None):
@@ -33,6 +35,7 @@ def find(content,second=None, source=None, parser=None):
             try:
                 bs = soup(text, parser)
             except Exception as err:
+                raise err
                 return "Parser String Invalid"
     else:
         if parser == None:
@@ -52,6 +55,7 @@ def findAll(content,second=None, source=None, parser=None):
             try:
                 bs = soup(text, parser)
             except Exception as err:
+                raise err
                 return "Parser String Invalid"
     else:
         if parser == None:
