@@ -6,7 +6,7 @@ def get(url, Headers = None, data=None, params=None, allow_redirects=None,cookie
         allow_redirects = False
     global text
     try:
-        r = requests.get(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=None, auth = None)
+        r = requests.get(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
         text = r.text
         return r
     except Exception as err:
@@ -16,7 +16,7 @@ def post(url, headers=None,data=None,json=None,allow_redirects=None,cookies=None
         allow_redirects = False
     global text
     try:
-        r = requests.post(url,headers= Headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=None, auth = None)
+        r = requests.post(url,headers= Headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=cookies, auth = auth)
         text = r.text
         return r
     except Exception as err:
