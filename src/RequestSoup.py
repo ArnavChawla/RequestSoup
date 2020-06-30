@@ -9,7 +9,7 @@ def get(url, Headers = None, data=None, params=None, allow_redirects=None,cookie
         r = requests.get(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=None, auth = None)
         text = r.text
         return r
-    except:
+    except Exception as err:
         return "(Request-Soup Debug) there was an error with your GET request"
 def post(url, headers=None,data=None,json=None,allow_redirects=None,cookies=None,auth=None):
     if allow_redirects != None and allow_redirects != True:
@@ -19,7 +19,7 @@ def post(url, headers=None,data=None,json=None,allow_redirects=None,cookies=None
         r = requests.post(url,headers= Headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=None, auth = None)
         text = r.text
         return r
-    except:
+    except Exception as err:
         return "(Request-Soup Debug) there was an error with your POST request"
 
 def find(content,second=None, source=None, parser=None):
@@ -32,7 +32,7 @@ def find(content,second=None, source=None, parser=None):
         else:
             try:
                 bs = soup(text, parser)
-            except:
+            except Exception as err:
                 return "Parser String Invalid"
     else:
         if parser == None:
@@ -51,7 +51,7 @@ def findAll(content,second=None, source=None, parser=None):
         else:
             try:
                 bs = soup(text, parser)
-            except:
+            except Exception as err:
                 return "Parser String Invalid"
     else:
         if parser == None:
@@ -70,7 +70,8 @@ class Session():
             r = self.session.get(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=None, auth = None)
             self.text = r.text
             return r
-        except:
+        except Exception as err:
+            raise err
             return "(Request-Soup Debug) there was an error with your GET request"
     def post(url, headers=None,data=None,json=None,allow_redirects=None,cookies=None,auth=None):
         if allow_redirects != None and allow_redirects != True:
@@ -79,7 +80,8 @@ class Session():
             r = self.session.post(url,headers= Headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=None, auth = None)
             text = r.text
             return r
-        except:
+        except Exception as err:
+            raise err
             return "(Request-Soup Debug) there was an error with your POST request"
 
     def find(content,second=None, source=None, parser=None):
@@ -90,7 +92,8 @@ class Session():
             else:
                 try:
                     bs = soup(self.text, parser)
-                except:
+                except Exception as err:
+                    raise err
                     return "Parser String Invalid"
         else:
             if parser == None:
@@ -107,7 +110,8 @@ class Session():
             else:
                 try:
                     bs = soup(self.text, parser)
-                except:
+                except Exception as err:
+                    raise err
                     return "Parser String Invalid"
         else:
             if parser == None:
