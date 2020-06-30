@@ -12,6 +12,28 @@ def get(url, Headers = None, data=None, params=None, allow_redirects=None,cookie
     except Exception as err:
         raise err
         return "(Request-Soup Debug) there was an error with your GET request"
+def delete(url, Headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
+    if allow_redirects != None and allow_redirects != True:
+        allow_redirects = False
+    global text
+    try:
+        r = requests.delete(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
+        text = r.text
+        return r
+    except Exception as err:
+        raise err
+        return "(Request-Soup Debug) there was an error with your DELETE request"
+def put(url, Headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
+    if allow_redirects != None and allow_redirects != True:
+        allow_redirects = False
+    global text
+    try:
+        r = requests.put(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
+        text = r.text
+        return r
+    except Exception as err:
+        raise err
+        return "(Request-Soup Debug) there was an error with your PUT request"
 def post(url, headers=None,data=None,json=None,allow_redirects=None,cookies=None,auth=None):
     if allow_redirects != None and allow_redirects != True:
         allow_redirects = False
@@ -23,7 +45,17 @@ def post(url, headers=None,data=None,json=None,allow_redirects=None,cookies=None
     except Exception as err:
         raise err
         return "(Request-Soup Debug) there was an error with your POST request"
-
+def patch(url, headers=None,data=None,json=None,allow_redirects=None,cookies=None,auth=None):
+    if allow_redirects != None and allow_redirects != True:
+        allow_redirects = False
+    global text
+    try:
+        r = requests.patch(url,headers= Headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=cookies, auth = auth)
+        text = r.text
+        return r
+    except Exception as err:
+        raise err
+        return "(Request-Soup Debug) there was an error with your POST request"
 def find(content,second=None, source=None, parser=None):
     bs = None
     global text
@@ -67,7 +99,7 @@ class Session():
     def __init__(self):
         self.session = requests.Session()
         self.text = ""
-    def get(url, Headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
+    def get(self,url, Headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
         if allow_redirects != None and allow_redirects != True:
             allow_redirects = False
         try:
@@ -77,7 +109,7 @@ class Session():
         except Exception as err:
             raise err
             return "(Request-Soup Debug) there was an error with your GET request"
-    def post(url, headers=None,data=None,json=None,allow_redirects=None,cookies=None,auth=None):
+    def post(self,url, headers=None,data=None,json=None,allow_redirects=None,cookies=None,auth=None):
         if allow_redirects != None and allow_redirects != True:
             allow_redirects = False
         try:
@@ -88,7 +120,7 @@ class Session():
             raise err
             return "(Request-Soup Debug) there was an error with your POST request"
 
-    def find(content,second=None, source=None, parser=None):
+    def find(self,content,second=None, source=None, parser=None):
         bs = None
         if source == None:
             if parser == None:
@@ -106,7 +138,7 @@ class Session():
                 bs = soup(read, parser)
         return bs.find(content,second)
 
-    def findAll(content,second=None, source=None, parser=None):
+    def findAll(self,content,second=None, source=None, parser=None):
         bs = None
         if source == None:
             if parser == None:
@@ -123,5 +155,38 @@ class Session():
             else:
                 bs = soup(read, parser)
         return bs.findAll(content,second)
+    def patch(self,url, headers=None,data=None,json=None,allow_redirects=None,cookies=None,auth=None):
+        if allow_redirects != None and allow_redirects != True:
+            allow_redirects = False
+        global text
+        try:
+            r = self.session.patch(url,headers= Headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=cookies, auth = auth)
+            text = r.text
+            return r
+        except Exception as err:
+            raise err
+            return "(Request-Soup Debug) there was an error with your PATCH request"
+    def delete(self,url, Headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
+        if allow_redirects != None and allow_redirects != True:
+            allow_redirects = False
+        global text
+        try:
+            r = self.session.delete(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
+            text = r.text
+            return r
+        except Exception as err:
+            raise err
+            return "(Request-Soup Debug) there was an error with your DELETE request"
+    def put(self,url, Headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
+        if allow_redirects != None and allow_redirects != True:
+            allow_redirects = False
+        global text
+        try:
+            r = self.session.put(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
+            text = r.text
+            return r
+        except Exception as err:
+            raise err
+            return "(Request-Soup Debug) there was an error with your PUT request"
 if __name__ == "__main__":
     text = ""
