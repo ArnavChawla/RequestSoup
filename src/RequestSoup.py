@@ -1,34 +1,34 @@
 import requests
 from bs4 import BeautifulSoup as soup
 text = ""
-def get(url, Headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
+def get(url, headers=None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
     if allow_redirects != None and allow_redirects != True:
         allow_redirects = False
     global text
     try:
-        r = requests.get(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
+        r = requests.get(url,headers= headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
         text = r.text
         return r
     except Exception as err:
         raise err
         return "(Request-Soup Debug) there was an error with your GET request"
-def delete(url, Headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
+def delete(url, headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
     if allow_redirects != None and allow_redirects != True:
         allow_redirects = False
     global text
     try:
-        r = requests.delete(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
+        r = requests.delete(url,headers= headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
         text = r.text
         return r
     except Exception as err:
         raise err
         return "(Request-Soup Debug) there was an error with your DELETE request"
-def put(url, Headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
+def put(url, headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
     if allow_redirects != None and allow_redirects != True:
         allow_redirects = False
     global text
     try:
-        r = requests.put(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
+        r = requests.put(url,headers= headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
         text = r.text
         return r
     except Exception as err:
@@ -39,7 +39,7 @@ def post(url, headers=None,data=None,json=None,allow_redirects=None,cookies=None
         allow_redirects = False
     global text
     try:
-        r = requests.post(url,headers= Headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=cookies, auth = auth)
+        r = requests.post(url,headers= headers,data=data, json=json, allow_redirects=allow_redirects,cookies=cookies, auth = auth)
         text = r.text
         return r
     except Exception as err:
@@ -50,7 +50,7 @@ def patch(url, headers=None,data=None,json=None,allow_redirects=None,cookies=Non
         allow_redirects = False
     global text
     try:
-        r = requests.patch(url,headers= Headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=cookies, auth = auth)
+        r = requests.patch(url,headers= headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=cookies, auth = auth)
         text = r.text
         return r
     except Exception as err:
@@ -99,11 +99,11 @@ class Session():
     def __init__(self):
         self.session = requests.Session()
         self.text = ""
-    def get(self,url, Headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
+    def get(self,url, headers=None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
         if allow_redirects != None and allow_redirects != True:
             allow_redirects = False
         try:
-            r = self.session.get(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=None, auth = None)
+            r = self.session.get(url,headers= headers,data=data,params=params, allow_redirects=allow_redirects,cookies=None, auth = None)
             self.text = r.text
             return r
         except Exception as err:
@@ -113,7 +113,7 @@ class Session():
         if allow_redirects != None and allow_redirects != True:
             allow_redirects = False
         try:
-            r = self.session.post(url,headers= Headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=None, auth = None)
+            r = self.session.post(url,headers= headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=None, auth = None)
             text = r.text
             return r
         except Exception as err:
@@ -160,29 +160,29 @@ class Session():
             allow_redirects = False
         global text
         try:
-            r = self.session.patch(url,headers= Headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=cookies, auth = auth)
+            r = self.session.patch(url,headers=headers,data=data,params=params, json=json, allow_redirects=allow_redirects,cookies=cookies, auth = auth)
             text = r.text
             return r
         except Exception as err:
             raise err
             return "(Request-Soup Debug) there was an error with your PATCH request"
-    def delete(self,url, Headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
+    def delete(self,url, headers=None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
         if allow_redirects != None and allow_redirects != True:
             allow_redirects = False
         global text
         try:
-            r = self.session.delete(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
+            r = self.session.delete(url,headers= headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
             text = r.text
             return r
         except Exception as err:
             raise err
             return "(Request-Soup Debug) there was an error with your DELETE request"
-    def put(self,url, Headers = None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
+    def put(self,url, headers=None, data=None, params=None, allow_redirects=None,cookies=None,auth=None):
         if allow_redirects != None and allow_redirects != True:
             allow_redirects = False
         global text
         try:
-            r = self.session.put(url,headers= Headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
+            r = self.session.put(url,headers=headers,data=data,params=params, allow_redirects=allow_redirects,cookies=cookies,auth=auth)
             text = r.text
             return r
         except Exception as err:
