@@ -95,6 +95,24 @@ def findAll(content,second=None, source=None, parser=None):
         else:
             bs = soup(read, parser)
     return bs.findAll(content,second)
+def getText(content,second=None, source=None, parser=None):
+    global text
+    bs = None
+    if source == None:
+        if parser == None:
+            bs = soup(text, "html.parser")
+        else:
+            try:
+                bs = soup(text, parser)
+            except Exception as err:
+                raise err
+                return "Parser String Invalid"
+    else:
+        if parser == None:
+            bs = soup(read, "html.parser")
+        else:
+            bs = soup(read, parser)
+    return bs.getText(content,second)
 class Session():
     def __init__(self):
         self.session = requests.Session()
@@ -155,6 +173,23 @@ class Session():
             else:
                 bs = soup(read, parser)
         return bs.findAll(content,second)
+    def getText(self,content,second=None, source=None, parser=None):
+        bs = None
+        if source == None:
+            if parser == None:
+                bs = soup(self.text, "html.parser")
+            else:
+                try:
+                    bs = soup(self.text, parser)
+                except Exception as err:
+                    raise err
+                    return "Parser String Invalid"
+        else:
+            if parser == None:
+                bs = soup(read, "html.parser")
+            else:
+                bs = soup(read, parser)
+        return bs.getText(content,second)
     def patch(self,url, headers=None,data=None,json=None,allow_redirects=None,cookies=None,auth=None):
         if allow_redirects != None and allow_redirects != True:
             allow_redirects = False
