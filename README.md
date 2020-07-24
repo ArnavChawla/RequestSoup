@@ -1,5 +1,5 @@
 # Welcome to RequestSoup!
-
+[![Downloads](https://pepy.tech/badge/requestsoup)](https://pepy.tech/project/requestsoup)
 RequestSoup was created with the goal to make Python web-scraping easier. The package interfaces both requests and BeautifulSoup, making them easier to use in conjunction with one another.
 
 # Installation
