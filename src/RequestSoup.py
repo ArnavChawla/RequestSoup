@@ -71,9 +71,9 @@ def find(content,second=None, source=None, parser=None):
                 return "Parser String Invalid"
     else:
         if parser == None:
-            bs = soup(read, "html.parser")
+            bs = soup(source, "html.parser")
         else:
-            bs = soup(read, parser)
+            bs = soup(source, parser)
     return bs.find(content,second)
 
 def findAll(content,second=None, source=None, parser=None):
@@ -91,9 +91,9 @@ def findAll(content,second=None, source=None, parser=None):
                 return "Parser String Invalid"
     else:
         if parser == None:
-            bs = soup(read, "html.parser")
+            bs = soup(source, "html.parser")
         else:
-            bs = soup(read, parser)
+            bs = soup(source, parser)
     return bs.findAll(content,second)
 def getText(content,second=None, source=None, parser=None):
     global text
@@ -109,9 +109,9 @@ def getText(content,second=None, source=None, parser=None):
                 return "Parser String Invalid"
     else:
         if parser == None:
-            bs = soup(read, "html.parser")
+            bs = soup(source, "html.parser")
         else:
-            bs = soup(read, parser)
+            bs = soup(source, parser)
     return bs.getText(content,second)
 class Session():
     def __init__(self):
@@ -151,9 +151,9 @@ class Session():
                     return "Parser String Invalid"
         else:
             if parser == None:
-                bs = soup(read, "html.parser")
+                bs = soup(source, "html.parser")
             else:
-                bs = soup(read, parser)
+                bs = soup(source, parser)
         return bs.find(content,second)
 
     def findAll(self,content,second=None, source=None, parser=None):
@@ -169,9 +169,9 @@ class Session():
                     return "Parser String Invalid"
         else:
             if parser == None:
-                bs = soup(read, "html.parser")
+                bs = soup(source, "html.parser")
             else:
-                bs = soup(read, parser)
+                bs = soup(source, parser)
         return bs.findAll(content,second)
     def getText(self,content,second=None, source=None, parser=None):
         bs = None
@@ -186,9 +186,9 @@ class Session():
                     return "Parser String Invalid"
         else:
             if parser == None:
-                bs = soup(read, "html.parser")
+                bs = soup(source, "html.parser")
             else:
-                bs = soup(read, parser)
+                bs = soup(source, parser)
         return bs.getText(content,second)
     def patch(self,url, headers=None,data=None,json=None,allow_redirects=None,cookies=None,auth=None):
         if allow_redirects != None and allow_redirects != True:
